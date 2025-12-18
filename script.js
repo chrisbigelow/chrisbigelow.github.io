@@ -45,6 +45,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load saved state on page load
     loadTodoState();
     
+    // Todo filtering functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const todoItemElements = document.querySelectorAll('.todo-item');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter todo items
+            todoItemElements.forEach(item => {
+                if (filter === 'all') {
+                    item.classList.remove('hidden');
+                } else {
+                    const category = item.getAttribute('data-category');
+                    if (category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    });
+    
     // Smooth scrolling for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     
@@ -67,4 +95,63 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Fetch GitHub repositories
+    async function fetchGitHubRepos() {
+        const username = 'chrisbigelow';
+        const reposContainer = document.getElementById('github-repos');
+        
+        try {
+            const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100&type=all`);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch repositories');
+            }
+            
+            const repos = await response.json();
+            
+            // Filter out forks and sort by most recently updated
+            const filteredRepos = repos
+                .filter(repo => !repo.fork)
+                .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+            
+            if (filteredRepos.length === 0) {
+                reposContainer.innerHTML = '<p style="color: #6b7280; text-align: center;">No repositories found.</p>';
+                return;
+            }
+            
+            // Display repos in thin tile format
+            reposContainer.innerHTML = '<div class="github-repos-grid"></div>';
+            const grid = reposContainer.querySelector('.github-repos-grid');
+            
+            filteredRepos.forEach(repo => {
+                const repoCard = document.createElement('a');
+                repoCard.href = repo.html_url;
+                repoCard.target = '_blank';
+                repoCard.className = 'github-repo-card';
+                
+                const updatedDate = new Date(repo.updated_at);
+                const daysAgo = Math.floor((new Date() - updatedDate) / (1000 * 60 * 60 * 24));
+                const timeAgo = daysAgo === 0 ? 'today' : daysAgo === 1 ? '1 day ago' : `${daysAgo} days ago`;
+                
+                repoCard.innerHTML = `
+                    <div class="repo-name">${repo.name}</div>
+                    <div class="repo-footer">
+                        ${repo.language ? `<span class="repo-language">${repo.language}</span>` : ''}
+                        <span class="repo-updated">${timeAgo}</span>
+                        <span class="repo-visibility">${repo.private ? '🔒' : '🌐'}</span>
+                    </div>
+                `;
+                
+                grid.appendChild(repoCard);
+            });
+            
+        } catch (error) {
+            console.error('Error fetching GitHub repos:', error);
+            reposContainer.innerHTML = '<p style="color: #dc2626; text-align: center;">Failed to load repositories. Please try again later.</p>';
+        }
+    }
+    
+    // Load GitHub repos on page load
+    fetchGitHubRepos();
 }); 

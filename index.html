@@ -10,100 +10,134 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>👋 Hi, I'm Chris Bigelow</h1>
-        <p class="intro">I'm a product person with interests in tech, longevity, and fitness.</p>
-        <div class="social-links">
-            <a href="https://twitter.com/chbigelow" target="_blank" class="social-link">Twitter</a>
-            <a href="https://pareto.substack.com" target="_blank" class="social-link">Longevity Newsletter</a>
-        </div>
-    </header>
-
-    <main>
-        <section class="quick-links">
-            <h2>Quick Links</h2>
-            <div class="link-grid">
-                <a href="#todo" class="quick-link">📋 Public Todos</a>
-                <a href="#side-projects" class="quick-link">🚀 Side Projects</a>
+    <div class="container">
+        <header>
+            <div class="tile">
+                <h1>👋 Hi, I'm Chris Bigelow</h1>
+                <p class="intro">I'm a product person with interests in tech, longevity, and fitness.</p>
+                <div class="social-links">
+                    <a href="https://twitter.com/chbigelow" target="_blank" class="social-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 0.25rem;">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                        Twitter
+                    </a>
+                    <a href="https://linkedin.com/in/chrisbigelow" target="_blank" class="social-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 0.25rem;">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://pareto.substack.com" target="_blank" class="social-link">
+                        <img src="substack.png" alt="Substack" width="20" height="20" style="display: inline-block; vertical-align: middle; margin-right: 0.25rem;">
+                        Longevity Newsletter
+                    </a>
+                </div>
             </div>
-        </section>
+        </header>
 
-        <section id="todo" class="content-section">
-            <h2>Public Todos</h2>
-            <div class="legend">
-                <span class="legend-item">🏃‍♂️ Health & Fitness</span>
-                <span class="legend-item">💼 Professional</span>
-                <span class="legend-item">🏠 Personal</span>
-            </div>
-            
-            <ul class="todo-list">
-                <li class="todo-item completed">
-                    <input type="checkbox" id="todo1" checked>
-                    <label for="todo1">🏃‍♂️ 190kg squat</label>
-                </li>
-                <li class="todo-item completed">
-                    <input type="checkbox" id="todo5" checked>
-                    <label for="todo5">🏠 Buy House</label>
-                </li>
-                <li class="todo-item subtask completed">
-                    <input type="checkbox" id="todo5a" checked>
-                    <label for="todo5a">🏠 Rewire house (DIY)</label>
-                </li>
-                <li class="todo-item subtask completed">
-                    <input type="checkbox" id="todo5b" checked>
-                    <label for="todo5b">🏠 Replumb house (DIY)</label>
-                </li>
-                <li class="todo-item subtask">
-                    <input type="checkbox" id="todo5c">
-                    <label for="todo5c">🏠 Finish Kitchen renovation (DIY)</label>
-                </li>
-                <li class="todo-item">
-                    <input type="checkbox" id="todo2">
-                    <label for="todo2">🏃‍♂️ 200kg squat</label>
-                </li>
-                <li class="todo-item">
-                    <input type="checkbox" id="todo3">
-                    <label for="todo3">🏃‍♂️ Pace of aging below 0.8</label>
-                </li>
-                <li class="todo-item">
-                    <input type="checkbox" id="todo4">
-                    <label for="todo4">💼 Hit $10k MRR on side projects</label>
-                </li>
-                <li class="todo-item">
-                    <input type="checkbox" id="todo6">
-                    <label for="todo6">🏠 >1000 mile bikepacking trip</label>
-                </li>
-            </ul>
-        </section>
+        <main>
+            <section class="quick-links">
+                <div class="tile section-tile">
+                    <h2 class="section-header">Quick Links</h2>
+                    <div class="tile-grid-2">
+                        <a href="#todo" class="quick-link">📋 Public Todos</a>
+                        <a href="#side-projects" class="quick-link">🚀 Side Projects</a>
+                    </div>
+                </div>
+            </section>
 
-        <section id="side-projects" class="content-section">
-            <h2>Side Projects</h2>
-            <p>Here are some of the side projects I've worked on:</p>
-            
-            <div class="project-download">
-                <a href="side-project-resume.pdf" class="download-button" download>
-                    📄 Download Side Project Resume (PDF)
-                </a>
-            </div>
-            
-            <div class="project-list">
-                <ul>
-                    <!-- <li><strong>Project 1:</strong> Brief description of your first side project</li>
-                    <li><strong>Project 2:</strong> Brief description of your second side project</li>
-                    <li><strong>Project 3:</strong> Brief description of your third side project</li> -->
-                </ul>
-            </div>
-        </section>
+            <section id="todo" class="content-section">
+                <div class="tile section-tile">
+                    <h2 class="section-header">Public Todos</h2>
+                    <div class="legend">
+                        <button class="legend-item filter-btn active" data-filter="all">All</button>
+                        <button class="legend-item filter-btn" data-filter="health">🏃‍♂️ Health & Fitness</button>
+                        <button class="legend-item filter-btn" data-filter="professional">💼 Professional</button>
+                        <button class="legend-item filter-btn" data-filter="personal">🏠 Personal</button>
+                        <button class="legend-item filter-btn" data-filter="travel">✈️ Travel</button>
+                    </div>
+                    
+                    <ul class="todo-list">
+                        <li class="todo-item completed" data-category="health">
+                            <input type="checkbox" id="todo1" checked>
+                            <label for="todo1">🏃‍♂️ 190kg squat</label>
+                        </li>
+                        <li class="todo-item completed" data-category="personal">
+                            <input type="checkbox" id="todo5" checked>
+                            <label for="todo5">🏠 Buy House</label>
+                        </li>
+                        <li class="todo-item subtask completed" data-category="personal">
+                            <input type="checkbox" id="todo5a" checked>
+                            <label for="todo5a">🏠 Rewire house (DIY)</label>
+                        </li>
+                        <li class="todo-item subtask completed" data-category="personal">
+                            <input type="checkbox" id="todo5b" checked>
+                            <label for="todo5b">🏠 Replumb house (DIY)</label>
+                        </li>
+                        <li class="todo-item subtask completed" data-category="personal">
+                            <input type="checkbox" id="todo5c" checked>
+                            <label for="todo5c">🏠 Finish Kitchen renovation (DIY)</label>
+                        </li>
+                        <li class="todo-item" data-category="health">
+                            <input type="checkbox" id="todo2">
+                            <label for="todo2">🏃‍♂️ 200kg squat</label>
+                        </li>
+                        <li class="todo-item" data-category="health">
+                            <input type="checkbox" id="todo3">
+                            <label for="todo3">🏃‍♂️ Pace of aging below 0.8</label>
+                        </li>
+                        <li class="todo-item" data-category="health">
+                            <input type="checkbox" id="todo7">
+                            <label for="todo7">🏃‍♂️ 20% improvement to VO2 max</label>
+                        </li>
+                        <li class="todo-item" data-category="professional">
+                            <input type="checkbox" id="todo4">
+                            <label for="todo4">💼 Hit $10k MRR on side projects</label>
+                        </li>
+                        <li class="todo-item" data-category="travel">
+                            <input type="checkbox" id="todo6">
+                            <label for="todo6">✈️ >1000 mile bikepacking trip</label>
+                        </li>
+                    </ul>
+                </div>
+            </section>
 
-        <section class="content-section">
-            <h2>Curated Content</h2>
-            <p>This section is reserved for links and articles I am particularly fond of.</p>
-        </section>
-    </main>
+            <section id="side-projects" class="content-section">
+                <div class="tile section-tile">
+                    <h2 class="section-header">Side Projects</h2>
+                    <p style="margin-bottom: 1.5rem; color: #6b7280;">Here are some of the side projects I've worked on:</p>
+                    
+                    <div class="project-download">
+                        <a href="side-project-resume.pdf" class="download-button" download>
+                            📄 Download Side Project Resume (PDF)
+                        </a>
+                    </div>
+                    
+                    <div class="project-list">
+                        <ul>
+                            <!-- <li><strong>Project 1:</strong> Brief description of your first side project</li>
+                            <li><strong>Project 2:</strong> Brief description of your second side project</li>
+                            <li><strong>Project 3:</strong> Brief description of your third side project</li> -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2024 Chris Bigelow. Built with HTML, CSS, and JavaScript.</p>
-    </footer>
+            <section class="content-section">
+                <div class="tile section-tile">
+                    <h2 class="section-header">Newest From My Github</h2>
+                    <div id="github-repos" class="github-repos">
+                        <p style="color: #6b7280; margin-bottom: 1rem;">Loading repositories...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Chris Bigelow. Built with HTML, CSS, and JavaScript.</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
