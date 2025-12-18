@@ -198,6 +198,44 @@ main {
     text-decoration: none;
 }
 
+/* Projects list */
+.projects-list {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-item {
+    text-align: center;
+}
+
+.project-link {
+    display: inline-block;
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.project-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+.project-link strong {
+    font-weight: 600;
+}
+
+.project-description {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    text-align: center;
+}
+
 /* Todo list as tiles */
 .todo-list {
     list-style: none;
