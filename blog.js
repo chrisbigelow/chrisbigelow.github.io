@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
                     } else if (sortType === 'date-asc') {
                         return new Date(a.getAttribute('data-date')) - new Date(b.getAttribute('data-date'));
-                    } else if (sortType === 'views') {
-                        return parseInt(b.getAttribute('data-views')) - parseInt(a.getAttribute('data-views'));
                     }
                     return 0;
                 });
