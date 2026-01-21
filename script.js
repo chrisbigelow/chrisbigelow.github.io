@@ -154,4 +154,64 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load GitHub repos on page load
     fetchGitHubRepos();
+    
+    // 100% Human Author Badge Popup
+    function initHumanAuthorBadge() {
+        // Create popup overlay if it doesn't exist
+        let popupOverlay = document.getElementById('human-author-popup-overlay');
+        if (!popupOverlay) {
+            popupOverlay = document.createElement('div');
+            popupOverlay.id = 'human-author-popup-overlay';
+            popupOverlay.className = 'human-author-popup-overlay';
+            popupOverlay.innerHTML = `
+                <div class="human-author-popup">
+                    <div class="human-author-popup-header">
+                        <h3 class="human-author-popup-title">100% Human Author</h3>
+                        <button class="human-author-popup-close" aria-label="Close">×</button>
+                    </div>
+                    <div class="human-author-popup-content">
+                        I hate reading slop. I use AI for research but I never use AI to write out what I publish.
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(popupOverlay);
+        }
+        
+        // Get all badges
+        const badges = document.querySelectorAll('.human-author-badge');
+        
+        badges.forEach(badge => {
+            badge.addEventListener('click', function(e) {
+                // Prevent navigation if badge is inside a link
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Show popup
+                popupOverlay.classList.add('active');
+            });
+        });
+        
+        // Close popup handlers
+        const closeBtn = popupOverlay.querySelector('.human-author-popup-close');
+        closeBtn.addEventListener('click', function() {
+            popupOverlay.classList.remove('active');
+        });
+        
+        // Close popup when clicking overlay
+        popupOverlay.addEventListener('click', function(e) {
+            if (e.target === popupOverlay) {
+                popupOverlay.classList.remove('active');
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+                popupOverlay.classList.remove('active');
+            }
+        });
+    }
+    
+    // Initialize badge popup
+    initHumanAuthorBadge();
 }); 
