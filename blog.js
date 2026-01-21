@@ -55,12 +55,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             document.body.appendChild(popupOverlay);
+            
+            // Close popup handlers (only set up once)
+            const closeBtn = popupOverlay.querySelector('.human-author-popup-close');
+            closeBtn.addEventListener('click', function() {
+                popupOverlay.classList.remove('active');
+            });
+            
+            // Close popup when clicking overlay
+            popupOverlay.addEventListener('click', function(e) {
+                if (e.target === popupOverlay) {
+                    popupOverlay.classList.remove('active');
+                }
+            });
+            
+            // Close popup with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+                    popupOverlay.classList.remove('active');
+                }
+            });
         }
         
-        // Get all badges
-        const badges = document.querySelectorAll('.human-author-badge');
+        // Get all badges that haven't been initialized yet
+        const badges = document.querySelectorAll('.human-author-badge:not([data-popup-initialized])');
         
         badges.forEach(badge => {
+            // Mark as initialized
+            badge.setAttribute('data-popup-initialized', 'true');
+            
             badge.addEventListener('click', function(e) {
                 // Prevent navigation if badge is inside a link
                 e.preventDefault();
@@ -69,26 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show popup
                 popupOverlay.classList.add('active');
             });
-        });
-        
-        // Close popup handlers
-        const closeBtn = popupOverlay.querySelector('.human-author-popup-close');
-        closeBtn.addEventListener('click', function() {
-            popupOverlay.classList.remove('active');
-        });
-        
-        // Close popup when clicking overlay
-        popupOverlay.addEventListener('click', function(e) {
-            if (e.target === popupOverlay) {
-                popupOverlay.classList.remove('active');
-            }
-        });
-        
-        // Close popup with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-                popupOverlay.classList.remove('active');
-            }
         });
     }
     
