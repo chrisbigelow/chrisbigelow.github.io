@@ -658,6 +658,11 @@ a:hover {
     color: #9ca3af;
 }
 
+.blog-post-author {
+    font-weight: 500;
+    color: #111827;
+}
+
 .blog-post-date {
     font-weight: 500;
 }
@@ -683,9 +688,16 @@ a:hover {
 .blog-article-meta {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     font-size: 0.9rem;
     color: #6b7280;
+    flex-wrap: wrap;
+}
+
+.blog-article-author {
+    font-weight: 500;
+    color: #111827;
 }
 
 .blog-article-content {
