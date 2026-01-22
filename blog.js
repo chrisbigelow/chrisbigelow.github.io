@@ -1,3 +1,83 @@
+// Utility function to extract plain text from HTML and generate excerpt
+function extractExcerpt(htmlContent, maxLength = 160) {
+    // Create a temporary div to parse HTML
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlContent;
+    
+    // Get all text content, preserving some structure
+    let text = tempDiv.textContent || tempDiv.innerText || '';
+    
+    // Clean up whitespace
+    text = text.replace(/\s+/g, ' ').trim();
+    
+    // Truncate to max length, trying to end at a word boundary
+    if (text.length > maxLength) {
+        text = text.substring(0, maxLength);
+        const lastSpace = text.lastIndexOf(' ');
+        if (lastSpace > maxLength * 0.8) { // Only break at word if we're not too close to the start
+            text = text.substring(0, lastSpace);
+        }
+        text = text.trim() + '...';
+    }
+    
+    return text;
+}
+
+// Function to update meta tags with excerpt
+function updateMetaTags(excerpt) {
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute('content', excerpt);
+    }
+    
+    // Update Open Graph description
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+        ogDescription.setAttribute('content', excerpt);
+    }
+    
+    // Update Twitter description
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) {
+        twitterDescription.setAttribute('content', excerpt);
+    }
+    
+    // Update JSON-LD description
+    const jsonLdScripts = document.querySelectorAll('script[type="application/ld+json"]');
+    jsonLdScripts.forEach(script => {
+        try {
+            const data = JSON.parse(script.textContent);
+            if (data['@type'] === 'BlogPosting' && data.description) {
+                data.description = excerpt;
+                script.textContent = JSON.stringify(data);
+            }
+        } catch (e) {
+            // Ignore JSON parse errors
+        }
+    });
+}
+
+// Function to fetch and extract excerpt from a blog post URL
+async function fetchBlogExcerpt(postUrl) {
+    try {
+        const response = await fetch(postUrl);
+        if (!response.ok) return null;
+        
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        const contentElement = doc.querySelector('.blog-article-content');
+        if (!contentElement) return null;
+        
+        return extractExcerpt(contentElement.innerHTML, 200);
+    } catch (error) {
+        console.error('Error fetching blog excerpt:', error);
+        return null;
+    }
+}
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -97,4 +177,36 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize badge popup
     initHumanAuthorBadge();
+    
+    // Auto-generate excerpts for blog post cards on listing pages
+    async function updateBlogPostExcerpts() {
+        const blogPostCards = document.querySelectorAll('.blog-post-card');
+        
+        for (const card of blogPostCards) {
+            const excerptElement = card.querySelector('.blog-post-excerpt');
+            if (!excerptElement) continue;
+            
+            // Skip if already has a data attribute indicating it was auto-generated
+            if (excerptElement.hasAttribute('data-auto-excerpt')) continue;
+            
+            const postUrl = card.getAttribute('href');
+            if (!postUrl) continue;
+            
+            // Handle relative URLs
+            const fullUrl = postUrl.startsWith('http') ? postUrl : 
+                          postUrl.startsWith('/') ? window.location.origin + postUrl :
+                          window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + postUrl;
+            
+            const excerpt = await fetchBlogExcerpt(fullUrl);
+            if (excerpt) {
+                excerptElement.textContent = excerpt;
+                excerptElement.setAttribute('data-auto-excerpt', 'true');
+            }
+        }
+    }
+    
+    // Update excerpts on blog listing page
+    if (document.getElementById('blog-posts')) {
+        updateBlogPostExcerpts();
+    }
 });

@@ -217,4 +217,71 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize badge popup
     initHumanAuthorBadge();
+    
+    // Utility function to extract plain text from HTML and generate excerpt
+    function extractExcerpt(htmlContent, maxLength = 160) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+        let text = tempDiv.textContent || tempDiv.innerText || '';
+        text = text.replace(/\s+/g, ' ').trim();
+        if (text.length > maxLength) {
+            text = text.substring(0, maxLength);
+            const lastSpace = text.lastIndexOf(' ');
+            if (lastSpace > maxLength * 0.8) {
+                text = text.substring(0, lastSpace);
+            }
+            text = text.trim() + '...';
+        }
+        return text;
+    }
+    
+    // Function to fetch and extract excerpt from a blog post URL
+    async function fetchBlogExcerpt(postUrl) {
+        try {
+            const response = await fetch(postUrl);
+            if (!response.ok) return null;
+            
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const contentElement = doc.querySelector('.blog-article-content');
+            if (!contentElement) return null;
+            
+            return extractExcerpt(contentElement.innerHTML, 200);
+        } catch (error) {
+            console.error('Error fetching blog excerpt:', error);
+            return null;
+        }
+    }
+    
+    // Auto-generate excerpts for blog post cards on main page
+    async function updateBlogPostExcerpts() {
+        const blogPostCards = document.querySelectorAll('.blog-post-card');
+        
+        for (const card of blogPostCards) {
+            const excerptElement = card.querySelector('.blog-post-excerpt');
+            if (!excerptElement) continue;
+            
+            // Skip if already has a data attribute indicating it was auto-generated
+            if (excerptElement.hasAttribute('data-auto-excerpt')) continue;
+            
+            const postUrl = card.getAttribute('href');
+            if (!postUrl) continue;
+            
+            // Handle relative URLs
+            const fullUrl = postUrl.startsWith('http') ? postUrl : 
+                          postUrl.startsWith('/') ? window.location.origin + postUrl :
+                          window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + postUrl;
+            
+            const excerpt = await fetchBlogExcerpt(fullUrl);
+            if (excerpt) {
+                excerptElement.textContent = excerpt;
+                excerptElement.setAttribute('data-auto-excerpt', 'true');
+            }
+        }
+    }
+    
+    // Update excerpts on main page
+    updateBlogPostExcerpts();
 }); 

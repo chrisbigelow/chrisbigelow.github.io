@@ -122,8 +122,59 @@
     </div>
 
     <script>
+        // Utility function to extract plain text from HTML and generate excerpt
+        function extractExcerpt(htmlContent, maxLength = 160) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            let text = tempDiv.textContent || tempDiv.innerText || '';
+            text = text.replace(/\s+/g, ' ').trim();
+            if (text.length > maxLength) {
+                text = text.substring(0, maxLength);
+                const lastSpace = text.lastIndexOf(' ');
+                if (lastSpace > maxLength * 0.8) {
+                    text = text.substring(0, lastSpace);
+                }
+                text = text.trim() + '...';
+            }
+            return text;
+        }
+
+        // Function to update meta tags with excerpt
+        function updateMetaTags(excerpt) {
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute('content', excerpt);
+            }
+            const ogDescription = document.querySelector('meta[property="og:description"]');
+            if (ogDescription) {
+                ogDescription.setAttribute('content', excerpt);
+            }
+            const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+            if (twitterDescription) {
+                twitterDescription.setAttribute('content', excerpt);
+            }
+            const jsonLdScripts = document.querySelectorAll('script[type="application/ld+json"]');
+            jsonLdScripts.forEach(script => {
+                try {
+                    const data = JSON.parse(script.textContent);
+                    if (data['@type'] === 'BlogPosting' && data.description) {
+                        data.description = excerpt;
+                        script.textContent = JSON.stringify(data);
+                    }
+                } catch (e) {
+                    // Ignore JSON parse errors
+                }
+            });
+        }
+
         // 100% Human Author Badge Popup
         document.addEventListener('DOMContentLoaded', function() {
+            // Auto-generate meta descriptions from blog post content
+            const contentElement = document.querySelector('.blog-article-content');
+            if (contentElement) {
+                const excerpt = extractExcerpt(contentElement.innerHTML, 160);
+                updateMetaTags(excerpt);
+            }
             function initHumanAuthorBadge() {
                 // Create popup overlay if it doesn't exist
                 let popupOverlay = document.getElementById('human-author-popup-overlay');
