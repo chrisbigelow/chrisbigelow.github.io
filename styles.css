@@ -911,6 +911,11 @@ a:hover {
 
 /* Desktop and larger screens */
 @media (min-width: 769px) {
+    /* Make container wider for blog articles on desktop */
+    .container:has(.blog-article) {
+        max-width: 900px;
+    }
+    
     .blog-article-content {
         padding: 2rem 2rem;
         margin: 0;
