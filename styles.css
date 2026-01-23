@@ -650,6 +650,11 @@ a:hover {
     color: #6b7280;
     line-height: 1.5;
     margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .blog-post-meta {
