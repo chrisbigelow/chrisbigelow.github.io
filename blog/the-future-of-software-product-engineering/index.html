@@ -110,7 +110,7 @@
                             <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" width="560" height="315" src="https://www.youtube.com/embed/jQqiTtkpFjM?si=Dt6G2SNjCy73HwFC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                         <div class="quote-box">
-                            <p>"I think the contract work trend is going to increase, and I think the size of your average company is going to decrease. I think we're going to see more and more billion dollar businesses built by four or five people, and it'll stay that."</p>
+                            <p>"I think the contract work trend is going to increase, and I think the size of your average company is going to decrease. I think we're going to see more and more billion dollar businesses built by four or five people, and it'll stay that way."</p>
                         </div>
                         <p style="font-size: 0.9em; font-style: italic; margin-top: -1rem; margin-bottom: 2rem; padding-left: 2rem; padding-right: 2rem;">That's Naval Ravikant in 2012 talking about the future of companies. I'm not sure I would have agreed with him until 2022.</p>
                         <h2>What's Happening Now</h2>
@@ -121,7 +121,7 @@
 
                         <p>For the time being, senior-level expertise seems to be the least impacted by layoffs and hiring freezes. In Addy Osmani's article on <a href="https://addyosmani.com/blog/next-two-years/" target="_blank" rel="noopener noreferrer">"The Next Two Years of Software Engineering"</a>, he points out that when companies start building with AI, they stop hiring juniors but keep hiring/retaining senior talent.</p>
 
-                        <p>When junior-level tasks are automated, what companies really need are people to work intelligently with AI's output and input. To validate what it does and prompt it correctly to build great software.</p>
+                        <p>When junior-level tasks are automated, what companies really need are people to work intelligently with AI's output and input. To validate the code it writes and prompt it precisely to build great software.</p>
 
                         <p>As the range of work AI can accomplish expands, the economics of employing someone with a narrow skillset become more challenging. AI-driven development favors <a href="https://www.youtube.com/watch?v=IMHneaMO-dg" target="_blank" rel="noopener noreferrer">T-shaped</a> engineers who have deep technical expertise in a vital areabut also the ability to build across the entire product.</p>
 
@@ -199,12 +199,6 @@
 
         // 100% Human Author Badge Popup
         document.addEventListener('DOMContentLoaded', function() {
-            // Auto-generate meta descriptions from blog post content
-            const contentElement = document.querySelector('.blog-article-content');
-            if (contentElement) {
-                const excerpt = extractExcerpt(contentElement.innerHTML, 160);
-                updateMetaTags(excerpt);
-            }
             function initHumanAuthorBadge() {
                 // Create popup overlay if it doesn't exist
                 let popupOverlay = document.getElementById('human-author-popup-overlay');

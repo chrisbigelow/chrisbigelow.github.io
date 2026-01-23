@@ -179,34 +179,35 @@ document.addEventListener('DOMContentLoaded', function() {
     initHumanAuthorBadge();
     
     // Auto-generate excerpts for blog post cards on listing pages
-    async function updateBlogPostExcerpts() {
-        const blogPostCards = document.querySelectorAll('.blog-post-card');
-        
-        for (const card of blogPostCards) {
-            const excerptElement = card.querySelector('.blog-post-excerpt');
-            if (!excerptElement) continue;
-            
-            // Skip if already has a data attribute indicating it was auto-generated
-            if (excerptElement.hasAttribute('data-auto-excerpt')) continue;
-            
-            const postUrl = card.getAttribute('href');
-            if (!postUrl) continue;
-            
-            // Handle relative URLs
-            const fullUrl = postUrl.startsWith('http') ? postUrl : 
-                          postUrl.startsWith('/') ? window.location.origin + postUrl :
-                          window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + postUrl;
-            
-            const excerpt = await fetchBlogExcerpt(fullUrl);
-            if (excerpt) {
-                excerptElement.textContent = excerpt;
-                excerptElement.setAttribute('data-auto-excerpt', 'true');
-            }
-        }
-    }
-    
-    // Update excerpts on blog listing page
-    if (document.getElementById('blog-posts')) {
-        updateBlogPostExcerpts();
-    }
+    // DISABLED: Excerpts are now set manually in the HTML
+    // async function updateBlogPostExcerpts() {
+    //     const blogPostCards = document.querySelectorAll('.blog-post-card');
+    //     
+    //     for (const card of blogPostCards) {
+    //         const excerptElement = card.querySelector('.blog-post-excerpt');
+    //         if (!excerptElement) continue;
+    //         
+    //         // Skip if already has a data attribute indicating it was auto-generated
+    //         if (excerptElement.hasAttribute('data-auto-excerpt')) continue;
+    //         
+    //         const postUrl = card.getAttribute('href');
+    //         if (!postUrl) continue;
+    //         
+    //         // Handle relative URLs
+    //         const fullUrl = postUrl.startsWith('http') ? postUrl : 
+    //                       postUrl.startsWith('/') ? window.location.origin + postUrl :
+    //                       window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + postUrl;
+    //         
+    //         const excerpt = await fetchBlogExcerpt(fullUrl);
+    //         if (excerpt) {
+    //             excerptElement.textContent = excerpt;
+    //             excerptElement.setAttribute('data-auto-excerpt', 'true');
+    //         }
+    //     }
+    // }
+    // 
+    // // Update excerpts on blog listing page
+    // if (document.getElementById('blog-posts')) {
+    //     updateBlogPostExcerpts();
+    // }
 });
