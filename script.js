@@ -248,7 +248,34 @@ document.addEventListener('DOMContentLoaded', function() {
             const contentElement = doc.querySelector('.blog-article-content');
             if (!contentElement) return null;
             
-            return extractExcerpt(contentElement.innerHTML, 200);
+            // Clone the content element to avoid modifying the original
+            const contentClone = contentElement.cloneNode(true);
+            
+            // Remove quote boxes and iframes/videos from the excerpt
+            const quoteBoxes = contentClone.querySelectorAll('.quote-box');
+            quoteBoxes.forEach(box => box.remove());
+            
+            const iframes = contentClone.querySelectorAll('iframe');
+            iframes.forEach(iframe => iframe.remove());
+            
+            // Find the first paragraph that's not italic (skip intro/quote paragraphs)
+            const allParagraphs = contentClone.querySelectorAll('p');
+            for (const p of allParagraphs) {
+                const style = p.getAttribute('style') || '';
+                const isItalic = style.includes('italic') || p.style.fontStyle === 'italic';
+                if (!isItalic && p.textContent.trim().length > 50) {
+                    return extractExcerpt(p.innerHTML, 200);
+                }
+            }
+            
+            // Fallback to first paragraph
+            const firstParagraph = contentClone.querySelector('p');
+            if (firstParagraph) {
+                return extractExcerpt(firstParagraph.innerHTML, 200);
+            }
+            
+            // Final fallback to extracting from all content
+            return extractExcerpt(contentClone.innerHTML, 200);
         } catch (error) {
             console.error('Error fetching blog excerpt:', error);
             return null;
