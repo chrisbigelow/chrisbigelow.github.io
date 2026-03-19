@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring AI-First Engineers - Chris Bigelow</title>
+    <meta name="description" content="Why LeetCode-style interviews are a poor proxy for real software engineering work, and a better format that evaluates how engineers build with AI.">
+    <meta name="author" content="Chris Bigelow">
+    <meta name="article:published_time" content="2026-03-19">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://chbigelow.com/blog/hiring-ai-first-engineers/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://chbigelow.com/blog/hiring-ai-first-engineers/">
+    <meta property="og:title" content="Hiring AI-First Engineers - Chris Bigelow">
+    <meta property="og:description" content="Why LeetCode-style interviews are a poor proxy for real software engineering work, and a better format that evaluates how engineers build with AI.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://chbigelow.com/blog/hiring-ai-first-engineers/">
+    <meta name="twitter:title" content="Hiring AI-First Engineers - Chris Bigelow">
+    <meta name="twitter:description" content="Why LeetCode-style interviews are a poor proxy for real software engineering work, and a better format that evaluates how engineers build with AI.">
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Hiring AI-First Engineers",
+      "description": "Why LeetCode-style interviews are a poor proxy for real software engineering work, and a better format that evaluates how engineers build with AI.",
+      "author": {
+        "@type": "Person",
+        "name": "Chris Bigelow",
+        "url": "https://chbigelow.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Chris Bigelow"
+      },
+      "datePublished": "2026-03-19",
+      "dateModified": "2026-03-19",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://chbigelow.com/blog/hiring-ai-first-engineers"
+      },
+      "url": "https://chbigelow.com/blog/hiring-ai-first-engineers"
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <main>
+            <section class="content-section">
+                <div class="tile section-tile blog-article">
+                    <a href="/blog/" class="blog-back-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                        </svg>
+                        Back to Blog
+                    </a>
+
+                    <article class="blog-article-header">
+                        <h1 class="blog-article-title">Hiring AI-First Engineers</h1>
+                        <div class="blog-article-meta">
+                            <span class="blog-article-author">By: Chris Bigelow</span>
+                            <time datetime="2026-03-19T10:00:00">Posted: Mar 19, 2026 at 10:00 AM MST</time>
+                            <span class="human-author-badge">100% Human Author</span>
+                            <button class="copy-link-button" id="copy-link-btn" aria-label="Copy article link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                </svg>
+                                <span class="copy-link-text">Copy Link</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <div class="blog-article-content" itemscope itemtype="https://schema.org/BlogPosting">
+                        <p>Historically, software engineering interviews have been dominated by questions where candidates solve problems by coding solutions using pre-memorized data structures and algorithms. These &quot;LeetCode interviews&quot; are marketed as the gold standard for assessing a candidate's &quot;ability to code.&quot; But that's hard to believe when the format is so far removed from the actual job of a software engineer.</p>
+
+                        <p>Most engineers I worked with at Google came to the same conclusion: LeetCode tests are mostly a proxy for an IQ test. They assess a candidate's ability to study a subject and pattern match what they've learned during the interview. This is a necessary trait for a successful engineer (being smart and able to learn) but it isn't sufficient. I knew plenty of high-IQ people at Google who weren't particularly productive or innovative. They got in because they aced LeetCode problems, but were never screened on their ability to do great work.</p>
+
+                        <p>With the rise of AI coding, the job of a software engineer is now even further removed from LeetCoding. AI can solve these problems instantly. Even if you encountered a situation where you had to add something like an <a href="https://leetcode.com/problems/lru-cache/description/" target="_blank" rel="noopener noreferrer">LRU cache</a> to your app's backend, you would have AI do it. You wouldn't write it yourself. I suspect candidates will become increasingly frustrated with companies that require them to code these solutions by hand. This is especially true for talented senior developers who already spend their free time building better software with AI. It's like showing up to a secretary job in 1995 and being asked if you know how to service a typewriter. You should be spending your time learning how to use a computer.</p>
+
+                        <p>Can't we come up with an interview format that assesses both IQ and an engineer's ability to actually do the job?</p>
+                        <p>I think we can.</p>
+
+                        <h2>The Take-Home Test</h2>
+                        <p>Take-home assessments have been getting bad press. They've been called &quot;free work&quot; or disrespectful of candidates' time. In the past, I would have agreed. Giving 50 candidates a six-hour project with the intention of hiring one developer is wasteful at best and unethical at worst. It also discourages great candidates who value their time from moving forward.</p>
+
+                        <p>Some companies try to solve this by paying candidates. PostHog, for example, <a href="https://posthog.com/handbook/people/hiring-process" target="_blank" rel="noopener noreferrer">pays candidates $1,000 to work with them for a day</a>. I tried this at my past startup. While I didn't pay as much, I got great feedback from candidates who were used to receiving nothing for their effort.</p>
+
+                        <p>Another option is to shorten the take-home test. Give candidates something fun they can build in two hours. This respects their time and gives them a sense of the problems your company works on. Before AI, it was hard to design a task that was both short and high signal. Now it's much easier. It's possible to build a relatively complex web application in two hours.</p>
+
+                        <p>This also provides a useful signal: whether the candidate knows how to work with AI. The task should be impossible to complete in the time limit without AI, and very difficult if the candidate doesn't know how to use AI well.</p>
+
+                        <h2>The &quot;Technical&quot; Interview</h2>
+                        <p>I call it a &quot;technical&quot; interview because it should still include cultural questions that reveal how a candidate works and thinks.</p>
+
+                        <p>Instead of LeetCode-style questions, the interview begins by having the candidate open Cursor and select a fast, less intelligent model (I borrowed this idea from <a href="https://x.com/BrendanFalk/status/2033977481724891247" target="_blank" rel="noopener noreferrer">Brendan Falk</a>). An early GPT model or Composer 1 works well. We start in Cursor because I want to see how the candidate navigates a codebase and reads real code. We use a faster, less capable model because I want them to move quickly and verify their work.</p>
+
+                        <p>Together, we build a small application or service. Along the way, I ask about their architectural decisions. I want to hear their thoughts before they turn to the model for answers. After about 30 minutes, we should have a small working app. By then I have a much better understanding of how quickly they can build, think, and reason.</p>
+
+                        <p>In the final 10-15 minutes, I ask about their side projects, projects they've led at work, and how they make decisions. I'm trying to understand their level of agency, which I believe is the most important factor for success on my teams.</p>
+
+                        <p>Interviewers and candidates are currently in an arms race. A quick search for &quot;AI interview assistant&quot; or &quot;AI cheating detector&quot; returns hundreds of tools. There are companies helping candidates cheat on interviews, and others claiming to detect that cheating. This is a road to nowhere.</p>
+
+                        <p>Companies need to take a different approach. The days of virtual LeetCode interviews are over. <a href="https://www.msn.com/en-in/money/news/google-brings-back-in-person-interviews-to-skirt-ai-cheating/ar-AA1KHHw9?cvid=6133CA48A8894EE6B932D15A30D28655&ocid=wispr&apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1" target="_blank" rel="noopener noreferrer">Large companies</a> are already moving back to in-person interviews to maintain control over the process. They want to keep asking LeetCode questions.</p>
+
+                        <p>But I'd rather work with someone who can build an entire backend in a day using Claude agents than someone who can solve <a href="https://leetcode.com/problems/word-ladder/" target="_blank" rel="noopener noreferrer">Word Ladder</a> by hand.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Chris Bigelow. Built with HTML, CSS, and JavaScript.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Utility function to extract plain text from HTML and generate excerpt
+        function extractExcerpt(htmlContent, maxLength = 160) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            let text = tempDiv.textContent || tempDiv.innerText || '';
+            text = text.replace(/\s+/g, ' ').trim();
+            if (text.length > maxLength) {
+                text = text.substring(0, maxLength);
+                const lastSpace = text.lastIndexOf(' ');
+                if (lastSpace > maxLength * 0.8) {
+                    text = text.substring(0, lastSpace);
+                }
+                text = text.trim() + '...';
+            }
+            return text;
+        }
+
+        // Function to update meta tags with excerpt
+        function updateMetaTags(excerpt) {
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute('content', excerpt);
+            }
+            const ogDescription = document.querySelector('meta[property="og:description"]');
+            if (ogDescription) {
+                ogDescription.setAttribute('content', excerpt);
+            }
+            const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+            if (twitterDescription) {
+                twitterDescription.setAttribute('content', excerpt);
+            }
+            const jsonLdScripts = document.querySelectorAll('script[type="application/ld+json"]');
+            jsonLdScripts.forEach(script => {
+                try {
+                    const data = JSON.parse(script.textContent);
+                    if (data['@type'] === 'BlogPosting' && data.description) {
+                        data.description = excerpt;
+                        script.textContent = JSON.stringify(data);
+                    }
+                } catch (e) {
+                    // Ignore JSON parse errors
+                }
+            });
+        }
+
+        // 100% Human Author Badge Popup
+        document.addEventListener('DOMContentLoaded', function() {
+            function initHumanAuthorBadge() {
+                // Create popup overlay if it doesn't exist
+                let popupOverlay = document.getElementById('human-author-popup-overlay');
+                if (!popupOverlay) {
+                    popupOverlay = document.createElement('div');
+                    popupOverlay.id = 'human-author-popup-overlay';
+                    popupOverlay.className = 'human-author-popup-overlay';
+                    popupOverlay.innerHTML = `
+                        <div class="human-author-popup">
+                            <div class="human-author-popup-header">
+                                <h3 class="human-author-popup-title">100% Human Author</h3>
+                                <button class="human-author-popup-close" aria-label="Close">&times;</button>
+                            </div>
+                            <div class="human-author-popup-content">
+                                I hate reading slop. I use AI for research but I never use AI to write out what I publish.
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(popupOverlay);
+
+                    // Close popup handlers (only set up once)
+                    const closeBtn = popupOverlay.querySelector('.human-author-popup-close');
+                    closeBtn.addEventListener('click', function() {
+                        popupOverlay.classList.remove('active');
+                    });
+
+                    // Close popup when clicking overlay
+                    popupOverlay.addEventListener('click', function(e) {
+                        if (e.target === popupOverlay) {
+                            popupOverlay.classList.remove('active');
+                        }
+                    });
+
+                    // Close popup with Escape key
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+                            popupOverlay.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Get all badges that haven't been initialized yet
+                const badges = document.querySelectorAll('.human-author-badge:not([data-popup-initialized])');
+
+                badges.forEach(badge => {
+                    // Mark as initialized
+                    badge.setAttribute('data-popup-initialized', 'true');
+
+                    badge.addEventListener('click', function(e) {
+                        // Prevent navigation if badge is inside a link
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Show popup
+                        popupOverlay.classList.add('active');
+                    });
+                });
+            }
+
+            // Initialize badge popup
+            initHumanAuthorBadge();
+
+            // Copy link button functionality
+            const copyLinkBtn = document.getElementById('copy-link-btn');
+            const copyLinkText = copyLinkBtn.querySelector('.copy-link-text');
+            const articleUrl = 'https://chbigelow.com/blog/hiring-ai-first-engineers';
+
+            copyLinkBtn.addEventListener('click', async function() {
+                try {
+                    await navigator.clipboard.writeText(articleUrl);
+                    // Update button text to show success
+                    const originalText = copyLinkText.textContent;
+                    copyLinkText.textContent = 'Copied!';
+                    copyLinkBtn.classList.add('copied');
+
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        copyLinkText.textContent = originalText;
+                        copyLinkBtn.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = articleUrl;
+                    textArea.style.position = 'fixed';
+                    textArea.style.opacity = '0';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        copyLinkText.textContent = 'Copied!';
+                        copyLinkBtn.classList.add('copied');
+                        setTimeout(() => {
+                            copyLinkText.textContent = 'Copy Link';
+                            copyLinkBtn.classList.remove('copied');
+                        }, 2000);
+                    } catch (fallbackErr) {
+                        copyLinkText.textContent = 'Failed';
+                        setTimeout(() => {
+                            copyLinkText.textContent = 'Copy Link';
+                        }, 2000);
+                    }
+                    document.body.removeChild(textArea);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
