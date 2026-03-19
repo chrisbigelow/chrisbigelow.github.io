@@ -914,6 +914,14 @@ a:hover {
     text-align: left;
 }
 
+/* Horizontal rule between sections inside blog posts */
+.blog-article-content hr {
+    margin: 3.5rem 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    width: 100%;
+}
+
 /* Copy link button (used in blog post headers) */
 .copy-link-button {
     display: inline-flex;
