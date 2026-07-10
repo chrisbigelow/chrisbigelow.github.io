@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Interfaces and the Moats That Matter - Chris Bigelow</title>
+    <meta name="description" content="WebGL made the browser good enough for serious software like Figma. Generative interfaces are the next shift, and the moats that matter are changing with it.">
+    <meta name="author" content="Chris Bigelow">
+    <meta name="article:published_time" content="2026-07-10">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter/">
+    <meta property="og:title" content="Generative Interfaces and the Moats That Matter - Chris Bigelow">
+    <meta property="og:description" content="WebGL made the browser good enough for serious software like Figma. Generative interfaces are the next shift, and the moats that matter are changing with it.">
+    <meta property="og:image" content="https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter/generative-interfaces.jpg">
+    <meta property="og:site_name" content="Chris Bigelow">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter/">
+    <meta name="twitter:title" content="Generative Interfaces and the Moats That Matter - Chris Bigelow">
+    <meta name="twitter:description" content="WebGL made the browser good enough for serious software like Figma. Generative interfaces are the next shift, and the moats that matter are changing with it.">
+    <meta name="twitter:image" content="https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter/generative-interfaces.jpg">
+    <meta name="twitter:creator" content="@chbigelow">
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Generative Interfaces and the Moats That Matter",
+      "description": "WebGL made the browser good enough for serious software like Figma. Generative interfaces are the next shift, and the moats that matter are changing with it.",
+      "author": {
+        "@type": "Person",
+        "name": "Chris Bigelow",
+        "url": "https://chbigelow.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Chris Bigelow"
+      },
+      "datePublished": "2026-07-10",
+      "dateModified": "2026-07-10",
+      "image": "https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter/generative-interfaces.jpg",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter"
+      },
+      "url": "https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter"
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <main>
+            <section class="content-section">
+                <div class="tile section-tile blog-article">
+                    <a href="/blog/" class="blog-back-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                        </svg>
+                        Back to Blog
+                    </a>
+
+                    <article class="blog-article-header">
+                        <h1 class="blog-article-title">Generative Interfaces and the Moats That Matter</h1>
+                        <div class="blog-article-meta">
+                            <span class="blog-article-author">By: Chris Bigelow</span>
+                            <time datetime="2026-07-10T13:41:00">Posted: Jul 10, 2026 at 1:41 PM MST</time>
+                            <span class="human-author-badge">100% Human Author</span>
+                            <button class="copy-link-button" id="copy-link-btn" aria-label="Copy article link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                </svg>
+                                <span class="copy-link-text">Copy Link</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <div class="blog-article-content" itemscope itemtype="https://schema.org/BlogPosting">
+                        <img src="generative-interfaces.jpg" alt="A felt recreation of the YouTube homepage interface" class="blog-article-image">
+
+                        <p>In the early 2010s, serious software was native software. Programs like Adobe Photoshop ran directly on your computer, where they had access to its memory, processors, graphics hardware, and native graphics APIs. Browser applications were easier to open and share, but they could not render complex graphics.</p>
+
+                        <p>Then WebGL arrived in 2011, giving browser applications a standard way to use hardware-accelerated graphics. Suddenly the performance gap was small enough that the browser's other advantages began to tip the scales. A browser application required no installation and worked across operating systems. A design could be shared by simply sending someone a link.</p>
+
+                        <p>Dylan Field and Evan Wallace saw this opportunity early. They spent years building a design application around WebGL, even when it was not clear that browsers were capable of supporting one. Figma's rendering engine bypassed much of the normal HTML rendering pipeline and worked directly with the graphics card. A designer could place an entire app on one large canvas. A developer could inspect it without installing special software. A product manager could leave comments in the actual file. Eventually, several people could work together in real time. The design stopped being an artifact passed between people and became a place where the team worked.</p>
+
+                        <p>Figma now has an extraordinary lead in interface design. The <a href="https://www.uxtools.co/survey/design-tools-awards/design-standard" target="_blank" rel="noopener noreferrer">UX Tools Design Tools Survey</a> reports that 82.3% of its respondents use Figma as their primary interface-design tool.</p>
+
+                        <p>We are now at the beginning of a technology shift in the way we render interfaces.</p>
+
+                        <p>Traditional user interfaces are relatively static. Designers think about what users want to do and how they will think to do it. They decide what screens, menus, forms, and dashboards exist ahead of time. The interface is fixed, and the user has to learn how to work within it which can sometimes be a frustrating process.</p>
+
+                        <p>With a Generative Interface, the screen UI is no longer designed in advance. Interfaces will be assembled at the moment they are needed, shaped by the user, the task, and the available context. Ask for this week's product analytics, and the system might create a live chart with the relevant data and controls. Instead of learning how the software works, the software learns what the user needs and generates it on the fly using LLMs to dynamically build from a component library.</p>
+
+                        <p><a href="https://posthog.com/docs/posthog-ai" target="_blank" rel="noopener noreferrer">PostHog</a> is moving in this direction. Rather than requiring users to navigate through dashboards, reports, and configuration screens, <a href="https://posthog.com/docs/posthog-ai" target="_blank" rel="noopener noreferrer">PostHog AI</a> lets them ask questions in plain English, query their product data, and generate insights and visualizations through a conversational interface.</p>
+
+                        <figure class="blog-image-pair">
+                            <div class="blog-image-pair-grid">
+                                <img src="posthog-dashboard.jpg" alt="Traditional PostHog dashboard with charts, funnels, and metrics">
+                                <img src="posthog-ai-home.jpg" alt="PostHog's new AI-first home screen with a conversational prompt">
+                            </div>
+                            <figcaption>PostHog's home experience is shifting from dashboard-first navigation to a conversational interface where you ask for insights in plain English.</figcaption>
+                        </figure>
+
+                        <p>Google has released <a href="https://a2ui.org/" target="_blank" rel="noopener noreferrer">A2UI</a>, an open protocol that allows agents to describe interactive interfaces using a declarative format. The application then renders those interfaces using its own native component library rather than executing arbitrary AI-generated code.</p>
+
+                        <p>Google has also announced generative interfaces and &quot;mini apps&quot; inside Search. Instead of merely returning a page of links, Search will be able to create interactive tables, graphs, simulations, and purpose-built tools in response to a query. See <a href="https://blog.google/products-and-platforms/products/search/search-io-2026/" target="_blank" rel="noopener noreferrer">Introducing Generative UI in Google Search</a>.</p>
+
+                        <div class="blog-video-embed blog-video-embed--short">
+                            <iframe src="https://www.youtube.com/embed/0qj6NrcPT6E" title="Google Generative UI in Search" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+
+                        <h2>What does this mean for your app?</h2>
+
+                        <p>What's not clear at the moment is what this means for apps and websites.</p>
+
+                        <p>Will apps go away and iOS/Android renders everything the user needs at the moment they need it? Or will traditional apps and websites remain and they simply all adopt generative UI where appropriate?</p>
+
+                        <p>I'm not sure of the end state, but in the near term I expect usage of some application interfaces to collapse as ChatGPT, Claude, Gemini, and other AI systems become more capable and generate more software on the fly. I haven't looked at any analytics tools or bug tracking tools for months because I can connect Claude to them and have it analyze the data. I never search for things on Wikipedia or X but instead have LLMs like Grok to search them for me.</p>
+
+                        <p>The companies behind those applications may continue providing the data, infrastructure, transactions, or services but the customer relationship is already moving towards the agent controlling the interface.</p>
+
+                        <h2>The moats that matter in an AI-first world</h2>
+
+                        <p>For the mid-sized internet company, the most valuable moats will increasingly fall into three categories:</p>
+
+                        <ul>
+                            <li><strong>Proprietary data, content, and networks</strong><br>Examples: TikTok, YouTube, DoorDash, Airbnb, Uber, and Tinder.</li>
+                            <li><strong>Regulatory and Operational complexity</strong><br>Examples: Stripe, Mercury, Revolut, Coinbase</li>
+                            <li><strong>Deep technical infrastructure</strong><br>Examples: Vercel, Supabase, Cloudflare</li>
+                        </ul>
+
+                        <p>There are other powerful moats, including distribution, scale, brand, cost advantages, and capital. Apple and Google benefit from distribution. Amazon, Netflix, and Cloudflare benefit from enormous scale. But these advantages are generally harder for a mid-sized company to build.</p>
+
+                        <p>If your moat is mainly your user interface and the ability for your SaaS product to move, store and organize data I would be concerned if I was an investor in your company. If you have one of the moats above, or another one I did not mention, then the news is better. You at least have a fighting chance in an AI-first world.</p>
+
+                        <p>If your moat is data, protect it. Data can be scraped, copied, or poisoned by generative AI. We are already seeing platforms flooded with synthetic content (look at your grandma's facebook), which can slowly degrade the value of the underlying network.</p>
+
+                        <p>If your moat is operating in a highly regulated or technically difficult market you have to increase your pace of innovation to compete with the increased intelligence capabilities startups will have access to.</p>
+
+                        <p>Your underlying rails have to be the best in the world because when an agent or generative interface decides which API, MCP server, or infrastructure provider to use, it won't care how good your marketing team is or if Matt Damon endorsed your app from space.</p>
+
+                        <p>Stripe recently released <a href="https://projects.dev/" target="_blank" rel="noopener noreferrer">Stripe Projects</a> through projects.dev, which allows AI agents to use Stripe, Vercel, Supabase, Chroma, and PlanetScale and more without a developer ever seeing a UI.</p>
+
+                        <p>This is a preview of where all software is going. Companies will increasingly compete not only for human users, but also to become the infrastructure selected by agents. We went from downloading applications, to using nearly all of them in the browser, and now we access many of them solely through an AI agent or a generated interface.</p>
+
+                        <p>WebGL turned the browser into a place where almost any kind of software could run. Generative AI will turn software into something that forms around us.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Chris Bigelow. Built with HTML, CSS, and JavaScript.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Utility function to extract plain text from HTML and generate excerpt
+        function extractExcerpt(htmlContent, maxLength = 160) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            let text = tempDiv.textContent || tempDiv.innerText || '';
+            text = text.replace(/\s+/g, ' ').trim();
+            if (text.length > maxLength) {
+                text = text.substring(0, maxLength);
+                const lastSpace = text.lastIndexOf(' ');
+                if (lastSpace > maxLength * 0.8) {
+                    text = text.substring(0, lastSpace);
+                }
+                text = text.trim() + '...';
+            }
+            return text;
+        }
+
+        // Function to update meta tags with excerpt
+        function updateMetaTags(excerpt) {
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute('content', excerpt);
+            }
+            const ogDescription = document.querySelector('meta[property="og:description"]');
+            if (ogDescription) {
+                ogDescription.setAttribute('content', excerpt);
+            }
+            const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+            if (twitterDescription) {
+                twitterDescription.setAttribute('content', excerpt);
+            }
+            const jsonLdScripts = document.querySelectorAll('script[type="application/ld+json"]');
+            jsonLdScripts.forEach(script => {
+                try {
+                    const data = JSON.parse(script.textContent);
+                    if (data['@type'] === 'BlogPosting' && data.description) {
+                        data.description = excerpt;
+                        script.textContent = JSON.stringify(data);
+                    }
+                } catch (e) {
+                    // Ignore JSON parse errors
+                }
+            });
+        }
+
+        // 100% Human Author Badge Popup
+        document.addEventListener('DOMContentLoaded', function() {
+            function initHumanAuthorBadge() {
+                // Create popup overlay if it doesn't exist
+                let popupOverlay = document.getElementById('human-author-popup-overlay');
+                if (!popupOverlay) {
+                    popupOverlay = document.createElement('div');
+                    popupOverlay.id = 'human-author-popup-overlay';
+                    popupOverlay.className = 'human-author-popup-overlay';
+                    popupOverlay.innerHTML = `
+                        <div class="human-author-popup">
+                            <div class="human-author-popup-header">
+                                <h3 class="human-author-popup-title">100% Human Author</h3>
+                                <button class="human-author-popup-close" aria-label="Close">&times;</button>
+                            </div>
+                            <div class="human-author-popup-content">
+                                I hate reading slop. I use AI for research but I never use AI to write out what I publish.
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(popupOverlay);
+
+                    // Close popup handlers (only set up once)
+                    const closeBtn = popupOverlay.querySelector('.human-author-popup-close');
+                    closeBtn.addEventListener('click', function() {
+                        popupOverlay.classList.remove('active');
+                    });
+
+                    // Close popup when clicking overlay
+                    popupOverlay.addEventListener('click', function(e) {
+                        if (e.target === popupOverlay) {
+                            popupOverlay.classList.remove('active');
+                        }
+                    });
+
+                    // Close popup with Escape key
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+                            popupOverlay.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Get all badges that haven't been initialized yet
+                const badges = document.querySelectorAll('.human-author-badge:not([data-popup-initialized])');
+
+                badges.forEach(badge => {
+                    // Mark as initialized
+                    badge.setAttribute('data-popup-initialized', 'true');
+
+                    badge.addEventListener('click', function(e) {
+                        // Prevent navigation if badge is inside a link
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Show popup
+                        popupOverlay.classList.add('active');
+                    });
+                });
+            }
+
+            // Initialize badge popup
+            initHumanAuthorBadge();
+
+            // Copy link button functionality
+            const copyLinkBtn = document.getElementById('copy-link-btn');
+            const copyLinkText = copyLinkBtn.querySelector('.copy-link-text');
+            const articleUrl = 'https://chbigelow.com/blog/generative-interfaces-and-the-moats-that-matter';
+
+            copyLinkBtn.addEventListener('click', async function() {
+                try {
+                    await navigator.clipboard.writeText(articleUrl);
+                    // Update button text to show success
+                    const originalText = copyLinkText.textContent;
+                    copyLinkText.textContent = 'Copied!';
+                    copyLinkBtn.classList.add('copied');
+
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        copyLinkText.textContent = originalText;
+                        copyLinkBtn.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = articleUrl;
+                    textArea.style.position = 'fixed';
+                    textArea.style.opacity = '0';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        copyLinkText.textContent = 'Copied!';
+                        copyLinkBtn.classList.add('copied');
+                        setTimeout(() => {
+                            copyLinkText.textContent = 'Copy Link';
+                            copyLinkBtn.classList.remove('copied');
+                        }, 2000);
+                    } catch (fallbackErr) {
+                        copyLinkText.textContent = 'Failed';
+                        setTimeout(() => {
+                            copyLinkText.textContent = 'Copy Link';
+                        }, 2000);
+                    }
+                    document.body.removeChild(textArea);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
