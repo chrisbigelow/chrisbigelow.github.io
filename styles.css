@@ -942,6 +942,12 @@ a:hover {
 }
 
 /* Featured image at the top of blog posts */
+.blog-article-figure {
+    margin: 0 0 2rem;
+    width: 100%;
+    max-width: 100%;
+}
+
 .blog-article-image {
     display: block;
     width: 100%;
@@ -949,6 +955,10 @@ a:hover {
     height: auto;
     margin: 0 0 2rem;
     border-radius: 8px;
+}
+
+.blog-article-figure .blog-article-image {
+    margin-bottom: 0;
 }
 
 /* Side-by-side image comparison in blog posts */
@@ -977,6 +987,7 @@ a:hover {
     border: 1px solid #e5e7eb;
 }
 
+.blog-article-figure figcaption,
 .blog-image-pair figcaption {
     margin-top: 0.75rem;
     font-size: 0.9rem;
