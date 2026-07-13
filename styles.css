@@ -1041,6 +1041,43 @@ a:hover {
     width: 100%;
 }
 
+.blog-article-content .footnote-ref {
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: super;
+}
+
+.blog-article-content .footnote-ref a {
+    text-decoration: none;
+    color: #2563eb;
+}
+
+.blog-article-content .footnotes {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    scroll-margin-top: 2rem;
+}
+
+.blog-article-content .footnotes ol {
+    margin-bottom: 0;
+    padding-left: 1.25rem;
+}
+
+.blog-article-content .footnotes li {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+    scroll-margin-top: 2rem;
+}
+
+.blog-article-content .footnote-backref {
+    text-decoration: none;
+    color: #2563eb;
+    margin-left: 0.25rem;
+}
+
 /* Copy link button (used in blog post headers) */
 .copy-link-button {
     display: inline-flex;
