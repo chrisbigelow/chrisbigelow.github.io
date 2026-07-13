@@ -231,6 +231,35 @@ h1 {
     text-align: center;
 }
 
+.section-header-with-back {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.section-header-with-back .section-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.section-back-arrow {
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.section-back-arrow:hover {
+    color: #1d4ed8;
+}
+
 /* Main content */
 main {
     margin-bottom: 3rem;
